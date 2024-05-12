@@ -34,22 +34,113 @@
                             <form action="">
 
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Avatar</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Avatar <span
+                                            class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
                                         <div id="image-preview" class="image-preview">
                                             <label for="image-upload" id="image-label">Choose File</label>
-                                            <input type="file" name="image" id="image-upload" />
+                                            <input type="file" name="avatar" id="image-upload" />
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Banner</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Banner <span
+                                            class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
                                         <div id="image-preview-2" class="image-preview">
                                             <label for="image-upload-2" id="image-label-2">Choose File</label>
-                                            <input type="file" name="image-2" id="image-upload-2" />
+                                            <input type="file" name="banner" id="image-upload-2" />
                                         </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="name">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="email" class="form-control" name="email">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Phone <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="phone">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Address <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="address">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">About <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <textarea class="summernote-simple" style="display: none;" name="about"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Website</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="website">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Facebook</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="fb_link">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">X</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="x_link">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Linkedin</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="in_link">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Whatsapp</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="wa_link">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Instagram</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="instra_link">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <button type="submit" class="btn btn-primary">Update Profile</button>
                                     </div>
                                 </div>
 

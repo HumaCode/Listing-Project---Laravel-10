@@ -66,6 +66,7 @@
     <script src="{{ asset('admin') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
     <script src="{{ asset('admin') }}/assets/js/stisla.js"></script>
 
+
     <!-- Template JS File -->
     <script src="{{ asset('admin') }}/assets/js/scripts.js"></script>
 

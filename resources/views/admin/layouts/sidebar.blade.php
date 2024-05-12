@@ -150,7 +150,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Logged in 5 min ago</div>
-                <a href="features-profile.html" class="dropdown-item has-icon">
+                <a href="{{ route('admin.profile') }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
                 <a href="features-activities.html" class="dropdown-item has-icon">
@@ -190,7 +190,8 @@
             <li class="menu-header">Dashboard</li>
 
             <li class="active">
-                <a class="nav-link " href="blank.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard
+                <a class="nav-link " href="{{ route('admin.dashboard.index') }}"><i
+                        class="fas fa-tachometer-alt"></i> <span>Dashboard
                     </span></a>
             </li>
 

@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/modules/summernote/summernote-bs4.css">
+    @stack('css')
+
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/components.css">
+
+
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -41,7 +43,7 @@
 
             <!-- Main Content -->
             <div class="main-content">
-                @yield('content')
+                @yield('contents')
             </div>
 
 
@@ -64,11 +66,12 @@
     <script src="{{ asset('admin') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
     <script src="{{ asset('admin') }}/assets/js/stisla.js"></script>
 
-    <!-- JS Libraies -->
-    <script src="{{ asset('admin') }}/assets/modules/summernote/summernote-bs4.js"></script>
-
     <!-- Template JS File -->
     <script src="{{ asset('admin') }}/assets/js/scripts.js"></script>
+
+    @stack('style')
+
+
 </body>
 
 </html>

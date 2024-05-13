@@ -18,4 +18,5 @@ Route::group(['middleware' => ['auth', 'user.type:admin'], 'prefix' => 'admin', 
 
     // profile admin
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });

@@ -70,6 +70,7 @@
     <!-- Template JS File -->
     <script src="{{ asset('admin') }}/assets/js/scripts.js"></script>
 
+
     @stack('style')
 
 

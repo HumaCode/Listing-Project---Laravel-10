@@ -25,6 +25,7 @@ return new class extends Migration
             $table->enum('user_type', ['user', 'admin'])->default('user');
             $table->text('website')->nullable();
             $table->text('fb_link')->nullable();
+            $table->text('in_link')->nullable();
             $table->text('x_link')->nullable();
             $table->text('wa_link')->nullable();
             $table->text('instra_link')->nullable();

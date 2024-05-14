@@ -61,7 +61,8 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="name">
+                                        <input type="text" class="form-control" name="name"
+                                            value="{{ $user->name }}">
                                     </div>
                                 </div>
 
@@ -69,7 +70,8 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="email" class="form-control" name="email">
+                                        <input type="email" class="form-control" name="email"
+                                            value="{{ $user->email }}">
                                     </div>
                                 </div>
 
@@ -77,7 +79,8 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Phone <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="phone">
+                                        <input type="text" class="form-control" name="phone"
+                                            value="{{ $user->phone }}">
                                     </div>
                                 </div>
 
@@ -85,7 +88,8 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Address <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="address">
+                                        <input type="text" class="form-control" name="address"
+                                            value="{{ $user->address }}">
                                     </div>
                                 </div>
 
@@ -93,49 +97,55 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">About <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea class="summernote-simple" style="display: none;" name="about"></textarea>
+                                        <textarea class="summernote-simple" style="display: none;" name="about">{!! $user->about !!}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Website</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="website">
+                                        <input type="text" class="form-control" name="website"
+                                            value="{{ $user->website }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Facebook</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="fb_link">
+                                        <input type="text" class="form-control" name="fb_link"
+                                            value="{{ $user->fb_link }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">X</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="x_link">
+                                        <input type="text" class="form-control" name="x_link"
+                                            value="{{ $user->x_link }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Linkedin</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="in_link">
+                                        <input type="text" class="form-control" name="in_link"
+                                            value="{{ $user->in_link }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Whatsapp</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="wa_link">
+                                        <input type="text" class="form-control" name="wa_link"
+                                            value="{{ $user->wa_link }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Instagram</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="instra_link">
+                                        <input type="text" class="form-control" name="instra_link"
+                                            value="{{ $user->instra_link }}">
                                     </div>
                                 </div>
 

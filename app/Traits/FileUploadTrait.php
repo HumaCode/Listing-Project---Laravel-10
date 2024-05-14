@@ -22,5 +22,7 @@ trait FileUploadTrait
 
             return $path . '/' . $imageName;
         }
+
+        return null;
     }
 }

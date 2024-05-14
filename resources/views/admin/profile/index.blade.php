@@ -39,9 +39,10 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Avatar <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <div id="image-preview" class="image-preview">
+                                        <div id="image-preview" class="image-preview avatar-preview">
                                             <label for="image-upload" id="image-label">Choose File</label>
                                             <input type="file" name="avatar" id="image-upload" />
+                                            <input type="hidden" name="old_avatar" value="{{ $user->avatar }}">
                                         </div>
                                     </div>
                                 </div>
@@ -50,9 +51,10 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Banner <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <div id="image-preview-2" class="image-preview">
+                                        <div id="image-preview-2" class="image-preview banner-preview">
                                             <label for="image-upload-2" id="image-label-2">Choose File</label>
                                             <input type="file" name="banner" id="image-upload-2" />
+                                            <input type="hidden" name="old_banner" value="{{ $user->banner }}">
                                         </div>
                                     </div>
                                 </div>
@@ -176,6 +178,21 @@
     {{-- <script src="{{ asset('admin') }}/assets/js/page/features-post-create.js"></script> --}}
 
     <script>
+        $(document).ready(function() {
+            $('.avatar-preview').css({
+                'background-image': 'url({{ asset($user->avatar) }})',
+                'background-size': 'cover',
+                'background-position': 'center center'
+            });
+
+            $('.banner-preview').css({
+                'background-image': 'url({{ asset($user->banner) }})',
+                'background-size': 'cover',
+                'background-position': 'center center'
+            });
+        })
+
+
         $.uploadPreview({
             input_field: "#image-upload", // Default: .image-upload
             preview_box: "#image-preview", // Default: .image-preview

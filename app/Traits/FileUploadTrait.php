@@ -16,7 +16,8 @@ trait FileUploadTrait
             $image->move(public_path($path), $imageName);
 
             // delete image
-            if ($oldPath && File::exists(public_path($oldPath))) {
+            $exculudedFolder = '/default';
+            if ($oldPath && File::exists(public_path($oldPath)) && strpos($oldPath, $exculudedFolder) !== 0) {
                 File::delete(public_path($oldPath));
             }
 

@@ -164,6 +164,52 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Update Password</h4>
+                        </div>
+                        <div class="card-body">
+
+                            <form action="{{ route('admin.profile-password.update') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+
+
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Password <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="password" class="form-control" name="password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Confirm Password
+                                        <span class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="password" class="form-control" name="password_confirmation">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <button type="submit" class="btn btn-primary">Change Password</button>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection

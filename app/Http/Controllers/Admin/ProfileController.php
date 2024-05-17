@@ -45,4 +45,19 @@ class ProfileController extends Controller
 
         return redirect()->back();
     }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', 'min:5', 'confirmed']
+        ]);
+
+        $user = Auth::user();
+        $user->password = bcrypt($request->password);
+        $user->save(); 
+
+        toastr()->success('Updated Password Successfully.');
+
+        return redirect()->back();
+    }
 }

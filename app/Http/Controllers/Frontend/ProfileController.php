@@ -11,4 +11,9 @@ class ProfileController extends Controller
     {
         return view('frontend.dashboard.profile.index');
     }
+
+    public function update(Request $request)
+    {
+        dd($request->all());
+    }
 }

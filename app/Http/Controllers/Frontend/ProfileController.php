@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     use FileUploadTrait;
-    
+
     public function index()
     {
         $user = Auth::user();
@@ -41,6 +41,22 @@ class ProfileController extends Controller
         $user->save();
 
         toastr()->success('Updated Successfully.');
+
+        return redirect()->back();
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password'  => ['required', 'current_password'],
+            'password'          => ['required', 'min:5', 'confirmed'],
+        ]);
+
+        $user           = Auth::user();
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        toastr()->success('Updated Password Successfully.');
 
         return redirect()->back();
     }

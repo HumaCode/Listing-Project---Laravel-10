@@ -14,6 +14,17 @@
         <li><a href="dsahboard_message.html"><i class="far fa-comments-alt"></i> Message</a></li>
 
         <li><a href="{{ route('user.profile.index') }}"><i class="far fa-user"></i> My Profile</a></li>
-        <li><a href="#"><i class="far fa-sign-out-alt"></i> Logo</a></li>
+        <li>
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                this.closest('form').submit();"><i
+                        class="far fa-sign-out-alt"></i> Logout</a>
+
+            </form>
+        </li>
     </ul>
 </div>

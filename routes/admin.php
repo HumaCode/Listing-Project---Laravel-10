@@ -24,4 +24,5 @@ Route::group(['middleware' => ['auth', 'user.type:admin'], 'prefix' => 'admin', 
 
     // hero routes
     Route::get('/hero', [HeroController::class, 'index'])->name('hero.index');
+    Route::put('/hero', [HeroController::class, 'update'])->name('hero.update');
 });

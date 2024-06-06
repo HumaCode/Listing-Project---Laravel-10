@@ -24,7 +24,9 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="">
+                            <form action="{{ route('admin.hero.update') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Background <span
@@ -32,7 +34,8 @@
                                     <div class="col-sm-12 col-md-7">
                                         <div id="image-preview" class="image-preview banner-preview">
                                             <label for="image-upload-2" id="image-label">Choose File</label>
-                                            <input type="file" name="banner" id="image-upload" />
+                                            <input type="file" name="background" id="image-upload"
+                                                accept=".jpg,.jpeg,.png" />
                                             {{-- <input type="hidden" name="old_banner" value="{{ $user->banner }}"> --}}
                                         </div>
                                     </div>
@@ -74,17 +77,5 @@
 
 @push('style')
     <script src="{{ asset('admin') }}/assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js"></script>
-
-
-    <script>
-        $.uploadPreview({
-            input_field: "#image-upload", // Default: .image-upload
-            preview_box: "#image-preview", // Default: .image-preview
-            label_field: "#image-label", // Default: .image-label
-            label_default: "Choose File", // Default: Choose File
-            label_selected: "Change File", // Default: Change File
-            no_label: false, // Default: false
-            success_callback: null // Default: null
-        });
-    </script>
+    <script src="{{ asset('admin') }}/assets/modules/upload-preview/assets/js/my_script_upload.js"></script>
 @endpush

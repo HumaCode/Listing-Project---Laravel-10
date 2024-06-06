@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\HeroUpdateRequest;
 use App\Models\Hero;
 use App\Traits\FileUploadTrait;
+use Illuminate\Http\Request;
 
 class HeroController extends Controller
 {
@@ -13,19 +14,21 @@ class HeroController extends Controller
 
     public function index()
     {
-        return view('admin.hero.index');
+        $hero = Hero::first();
+
+        return view('admin.hero.index', compact('hero'));
     }
 
-    public function update(HeroUpdateRequest $request)
+    public function update(Request $request)
     {
-        $imagePath = $this->uploadImage($request, 'background');
+        $imagePath = $this->uploadImage($request, 'background', $request->old_background);
 
         Hero::updateOrCreate(
             [
                 'id' => 1,
             ],
             [
-                'background'    => !empty($imagePath) ? $imagePath : '',
+                'background'    => !empty($imagePath) ? $imagePath : $request->old_background,
                 'title'         => $request->title,
                 'sub_title'     => $request->sub_title,
             ]

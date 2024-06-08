@@ -1,9 +1,6 @@
 @extends('admin.layouts.master')
 
 @push('css')
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/modules/summernote/summernote-bs4.css">
-    {{-- <link rel="stylesheet" href="{{ asset('admin') }}/assets/modules/jquery-selectric/selectric.css"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('admin') }}/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css"> --}}
 @endpush
 
 @section('contents')
@@ -29,7 +26,7 @@
                         </div>
                         <div class="card-body">
 
-
+                            {{ $dataTable->table() }}
 
                         </div>
                     </div>
@@ -41,7 +38,5 @@
 @endsection
 
 @push('style')
-    <script src="{{ asset('admin') }}/assets/modules/summernote/summernote-bs4.js"></script>
-    <script src="{{ asset('admin') }}/assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js"></script>
-    <script src="{{ asset('admin') }}/assets/modules/upload-preview/assets/js/my_script_upload.js"></script>
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 @endpush

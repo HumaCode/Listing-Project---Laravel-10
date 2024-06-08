@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 
 @push('css')
+    <link rel="stylesheet" href="//cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
 @endpush
 
 @section('contents')
@@ -38,5 +39,6 @@
 @endsection
 
 @push('style')
+    <script src="//cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 @endpush

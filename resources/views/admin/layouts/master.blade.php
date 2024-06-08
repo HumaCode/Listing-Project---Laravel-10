@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/modules/fontawesome/css/all.min.css">
 
+
     @stack('css')
 
 
@@ -33,7 +34,6 @@
     </script>
     <!-- /END GA -->
 
-    @vite(['resources/js/app.js', 'resources/js/app.css'])
 
 </head>
 

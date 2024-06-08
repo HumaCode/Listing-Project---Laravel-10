@@ -4,11 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CategoryStoreRequest;
+use App\Models\Category;
+use App\Traits\FileUploadTrait;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    use FileUploadTrait;
+
     /**
      * Display a listing of the resource.
      */
@@ -28,9 +34,23 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        //
+        $iconPath           = $this->uploadImage($request, 'image_icon');
+        $backgroundPath     = $this->uploadImage($request, 'background_image');
+
+        $category                   = new Category();
+        $category->image_icon       = $iconPath;
+        $category->background_image = $backgroundPath;
+        $category->name             = $request->name;
+        $category->slug             = $request->slug;
+        $category->show_at_home     = $request->show_at_home;
+        $category->status           = $request->status;
+        $category->save();
+
+        toastr()->success('Create Category Successfully.');
+
+        return to_route('admin.category.index');
     }
 
     /**
@@ -63,5 +83,16 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+
+
+    // slug
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
+
+        return response()->json(['slug' => $slug]);
     }
 }

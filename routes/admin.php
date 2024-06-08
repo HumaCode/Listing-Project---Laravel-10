@@ -29,4 +29,5 @@ Route::group(['middleware' => ['auth', 'user.type:admin'], 'prefix' => 'admin', 
 
     // category routes
     Route::resource('/category', CategoryController::class);
+    Route::get('/admin/category/checkSlug', [CategoryController::class, 'checkSlug']);
 });

@@ -30,15 +30,14 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="{{ route('admin.hero.update') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="name">
+                                        <input type="text" class="form-control" name="name" id="name" autofocus>
                                     </div>
                                 </div>
 
@@ -46,7 +45,7 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Slug <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="slug">
+                                        <input type="text" class="form-control" name="slug" id="slug" readonly>
                                     </div>
                                 </div>
 
@@ -54,8 +53,8 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image Icon <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <div id="image-preview" class="image-preview background-preview">
-                                            <label for="image-upload-2" id="image-label">Choose File</label>
+                                        <div id="image-preview" class="image-preview image-icon-preview">
+                                            <label for="image-upload" id="image-label">Choose File</label>
                                             <input type="file" name="image_icon" id="image-upload"
                                                 accept=".jpg,.jpeg,.png" />
                                             {{-- <input type="hidden" name="old_background"> --}}
@@ -67,9 +66,9 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Background Icon
                                         <span class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <div id="image-preview" class="image-preview background-preview">
+                                        <div id="image-preview-2" class="image-preview background-preview">
                                             <label for="image-upload-2" id="image-label">Choose File</label>
-                                            <input type="file" name="background_icon" id="image-upload"
+                                            <input type="file" name="background_image" id="image-upload-2"
                                                 accept=".jpg,.jpeg,.png" />
                                             {{-- <input type="hidden" name="old_background"> --}}
                                         </div>
@@ -133,5 +132,15 @@
     <script src="{{ asset('admin') }}/assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js"></script>
     <script src="{{ asset('admin') }}/assets/modules/upload-preview/assets/js/my_script_upload.js"></script>
 
-    <script></script>
+    <script>
+        // slug
+        const name = document.querySelector('#name');
+        const slug = document.querySelector('#slug');
+
+        name.addEventListener('change', function() {
+            fetch('/category/checkSlug?name=' + name.value)
+                .then(response => response.json())
+                .then(data => slug.value = data.slug)
+        });
+    </script>
 @endpush

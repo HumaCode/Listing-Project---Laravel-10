@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryStoreRequest;
+use App\Http\Requests\Admin\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Traits\FileUploadTrait;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -66,15 +67,31 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CategoryUpdateRequest $request, string $id)
     {
-        //
+        $iconPath           = $this->uploadImage($request, 'image_icon', $request->old_icon);
+        $backgroundPath     = $this->uploadImage($request, 'background_image', $request->old_background);
+
+        $category                   = Category::findOrFail($id);
+        $category->image_icon       = !empty($iconPath) ? $iconPath : $request->old_icon;
+        $category->background_image = !empty($backgroundPath) ? $backgroundPath : $request->old_background;
+        $category->name             = $request->name;
+        $category->slug             = $request->slug;
+        $category->show_at_home     = $request->show_at_home;
+        $category->status           = $request->status;
+        $category->save();
+
+        toastr()->success('Create Category Successfully.');
+
+        return to_route('admin.category.index');
     }
 
     /**

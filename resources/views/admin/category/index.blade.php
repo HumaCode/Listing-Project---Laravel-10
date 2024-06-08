@@ -51,6 +51,9 @@
         $('body').on('click', '.delete-item', function(e) {
             e.preventDefault();
 
+            let url = $(this).attr('href');
+            console.log(url);
+
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: "btn btn-success",
@@ -68,11 +71,30 @@
                 reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {
-                    swalWithBootstrapButtons.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
+
+                    $.ajax({
+                        method: 'DELETE',
+                        url: url,
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function(response) {
+                            if (response.status == 'success') {
+                                swalWithBootstrapButtons.fire({
+                                    title: "Deleted!",
+                                    text: response.message,
+                                    icon: "success"
+                                }).then(() => {
+                                    window.location.reload();
+                                });
+
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(error);
+                        }
                     });
+
                 } else if (
                     /* Read more about handling dismissals below */
                     result.dismiss === Swal.DismissReason.cancel

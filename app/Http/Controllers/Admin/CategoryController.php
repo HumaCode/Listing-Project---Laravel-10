@@ -99,7 +99,14 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $this->deleteFile($category->image_icon);
+        $this->deleteFile($category->background_image);
+
+        $category->delete();
+
+        return response(['status' => 'success', 'message' => 'Item deleted successfully..!']);
     }
 
 

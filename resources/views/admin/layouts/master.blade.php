@@ -70,10 +70,10 @@
     <script src="{{ asset('admin') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
     <script src="{{ asset('admin') }}/assets/js/stisla.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Template JS File -->
     <script src="{{ asset('admin') }}/assets/js/scripts.js"></script>
-
 
     @stack('style')
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

@@ -35,24 +35,77 @@
                                 @method('PUT')
 
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Background <span
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="name">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Slug <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="slug">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image Icon <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
                                         <div id="image-preview" class="image-preview background-preview">
                                             <label for="image-upload-2" id="image-label">Choose File</label>
-                                            <input type="file" name="background" id="image-upload"
+                                            <input type="file" name="image_icon" id="image-upload"
                                                 accept=".jpg,.jpeg,.png" />
-                                            <input type="hidden" name="old_background">
+                                            {{-- <input type="hidden" name="old_background"> --}}
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title <span
-                                            class="text-danger">*</span></label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Background Icon
+                                        <span class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="title"
-                                            value="{{ @$hero->title }}">
+                                        <div id="image-preview" class="image-preview background-preview">
+                                            <label for="image-upload-2" id="image-label">Choose File</label>
+                                            <input type="file" name="background_icon" id="image-upload"
+                                                accept=".jpg,.jpeg,.png" />
+                                            {{-- <input type="hidden" name="old_background"> --}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Show At
+                                        Home</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <div
+                                            class="selectric-wrapper selectric-form-control selectric-selectric selectric-below">
+                                            <div class="selectric-hide-select">
+                                                <select class="form-control selectric" tabindex="-1" name="show_at_home">
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <div
+                                            class="selectric-wrapper selectric-form-control selectric-selectric selectric-below">
+                                            <div class="selectric-hide-select">
+                                                <select class="form-control selectric" tabindex="-1" name="status">
+                                                    <option value="1">Active</option>
+                                                    <option value="0">Inactive</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
 

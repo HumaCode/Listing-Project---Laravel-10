@@ -43,7 +43,7 @@ class CategoryController extends Controller
         $category                   = new Category();
         $category->image_icon       = $iconPath;
         $category->background_image = $backgroundPath;
-        $category->name             = $request->name;
+        $category->name             = ucwords($request->name);
         $category->slug             = $request->slug;
         $category->show_at_home     = $request->show_at_home;
         $category->status           = $request->status;
@@ -83,7 +83,7 @@ class CategoryController extends Controller
         $category                   = Category::findOrFail($id);
         $category->image_icon       = !empty($iconPath) ? $iconPath : $request->old_icon;
         $category->background_image = !empty($backgroundPath) ? $backgroundPath : $request->old_background;
-        $category->name             = $request->name;
+        $category->name             = ucwords($request->name);
         $category->slug             = $request->slug;
         $category->show_at_home     = $request->show_at_home;
         $category->status           = $request->status;

@@ -30,8 +30,11 @@ Route::group(['middleware' => ['auth', 'user.type:admin'], 'prefix' => 'admin', 
 
     // category routes
     Route::resource('/category', CategoryController::class);
-    Route::get('/admin/category/checkSlug', [CategoryController::class, 'checkSlug']);
 
     // location routes
     Route::resource('/location', LocationController::class);
 });
+
+// slug route
+Route::get('/category/checkSlug', [CategoryController::class, 'checkSlug'])->name('slug.category');
+Route::get('/location/checkSlug', [LocationController::class, 'checkSlug'])->name('slug.location');

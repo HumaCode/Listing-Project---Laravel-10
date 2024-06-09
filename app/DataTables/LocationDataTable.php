@@ -23,6 +23,21 @@ class LocationDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', 'location.action')
+            ->addColumn('show', function ($query) {
+                if ($query->show_at_home === 1) {
+                    return '<span class="badge badge-success">Yes</span>';
+                } else {
+                    return '<span class="badge badge-danger">No</span>';
+                }
+            })
+            ->addColumn('status', function ($query) {
+                if ($query->status === 1) {
+                    return '<span class="badge badge-success">Active</span>';
+                } else {
+                    return '<span class="badge badge-danger">Inactive</span>';
+                }
+            })
+            ->rawColumns(['show', 'status', 'action'])
             ->setRowId('id');
     }
 
@@ -40,20 +55,12 @@ class LocationDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('location-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('location-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(1)
+            ->selectStyleSingle();
     }
 
     /**
@@ -62,15 +69,21 @@ class LocationDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+
+            Column::make('id')
+                ->width(100)
+                ->addClass('text-center align-middle'),
+            Column::make('name')
+                ->addClass('text-center align-middle'),
+            Column::make('show')
+                ->addClass('text-center align-middle'),
+            Column::make('status')
+                ->addClass('text-center align-middle'),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(200)
+                ->addClass('text-center align-middle'),
         ];
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\AmenityDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AmenityStoreRequest;
 use App\Models\Amenity;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
@@ -29,9 +30,18 @@ class AmenityController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AmenityStoreRequest $request)
     {
-        //
+        $amenity                   = new Amenity();
+        $amenity->icon             = $request->icon;
+        $amenity->name             = ucwords($request->name);
+        $amenity->slug             = $request->slug;
+        $amenity->status           = $request->status;
+        $amenity->save();
+
+        toastr()->success('Create Amenity Successfully.');
+
+        return to_route('admin.amenity.index');
     }
 
     /**

@@ -35,7 +35,8 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Icon <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <div role="iconpicker" data-unselected-class="primary" data-cols="7"></div>
+                                        <div role="iconpicker" data-unselected-class="" data-selected-class="btn-danger"
+                                            data-cols="7" name="icon"></div>
                                     </div>
                                 </div>
 

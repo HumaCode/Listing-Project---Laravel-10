@@ -22,7 +22,23 @@ class AmenityDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'amenity.action')
+            ->addColumn('action', function ($query) {
+                $edit = '<a href="' . route('admin.amenity.edit', $query->id) . '" class="btn btn-success"><i class="fas fa-edit"></i></a>';
+                $delete = '<a href="' . route('admin.amenity.destroy', $query->id) . '" class="btn btn-danger delete-item"><i class="fas fa-trash"></i></a>';
+
+                return $edit . ' &nbsp; ' . $delete;
+            })
+            ->addColumn('icon', function ($query) {
+                return '<i class="' . $query->icon . '" style="font-size:50px;"></i>';
+            })
+            ->addColumn('status', function ($query) {
+                if ($query->status === 1) {
+                    return '<span class="badge badge-success">Active</span>';
+                } else {
+                    return '<span class="badge badge-danger">Inactive</span>';
+                }
+            })
+            ->rawColumns(['icon', 'status', 'action'])
             ->setRowId('id');
     }
 
@@ -40,20 +56,20 @@ class AmenityDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('amenity-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('amenity-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(1)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -62,15 +78,19 @@ class AmenityDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('id')
+                ->addClass('text-center align-middle'),
+            Column::make('icon')
+                ->addClass('text-center align-middle'),
+            Column::make('name')
+                ->addClass('text-center align-middle'),
+            Column::make('status')
+                ->addClass('text-center align-middle'),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(200)
+                ->addClass('text-center align-middle'),
         ];
     }
 

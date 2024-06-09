@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AmenityController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -37,9 +38,13 @@ Route::group(['middleware' => ['auth', 'user.type:admin'], 'prefix' => 'admin', 
 
     // amenity routes
     Route::resource('/amenity', AmenityController::class);
+
+    // listing routes
+    Route::resource('/listing', ListingController::class);
 });
 
 // slug route
 Route::get('/category/checkSlug', [CategoryController::class, 'checkSlug'])->name('slug.category');
 Route::get('/location/checkSlug', [LocationController::class, 'checkSlug'])->name('slug.location');
 Route::get('/amenity/checkSlug', [AmenityController::class, 'checkSlug'])->name('slug.amenity');
+Route::get('/listing/checkSlug', [ListingController::class, 'checkSlug'])->name('slug.listing');

@@ -22,7 +22,12 @@ class LocationDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'location.action')
+            ->addColumn('action', function ($query) {
+                $edit = '<a href="' . route('admin.location.edit', $query->id) . '" class="btn btn-success"><i class="fas fa-edit"></i></a>';
+                $delete = '<a href="' . route('admin.location.destroy', $query->id) . '" class="btn btn-danger delete-item"><i class="fas fa-trash"></i></a>';
+
+                return $edit . ' &nbsp; ' . $delete;
+            })
             ->addColumn('show', function ($query) {
                 if ($query->show_at_home === 1) {
                     return '<span class="badge badge-success">Yes</span>';

@@ -205,14 +205,16 @@
             </li>
 
             <li
-                class="dropdown {{ setSidebarActive(['admin.category.index', 'admin.category.create', 'admin.location.index', 'admin.location.create']) }}">
+                class="dropdown {{ setSidebarActive(['admin.category.index', 'admin.category.create', 'admin.category.edit', 'admin.location.index', 'admin.location.create', 'admin.location.edit']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fas fa-columns"></i> <span>Listing</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ setSidebarActive(['admin.category.index', 'admin.category.create']) }}"><a
-                            class="nav-link" href="{{ route('admin.category.index') }}">Category</a></li>
-                    <li class="{{ setSidebarActive(['admin.location.index', 'admin.location.create']) }}"><a
-                            class="nav-link" href="{{ route('admin.location.index') }}">Location</a></li>
+                    <li
+                        class="{{ setSidebarActive(['admin.category.index', 'admin.category.create', 'admin.category.edit']) }}">
+                        <a class="nav-link" href="{{ route('admin.category.index') }}">Category</a></li>
+                    <li
+                        class="{{ setSidebarActive(['admin.location.index', 'admin.location.create', 'admin.location.edit']) }}">
+                        <a class="nav-link" href="{{ route('admin.location.index') }}">Location</a></li>
                 </ul>
             </li>
 

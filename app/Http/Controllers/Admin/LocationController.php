@@ -57,15 +57,26 @@ class LocationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $location = Location::findOrFail($id);
+
+        return view('admin.location.edit', compact('location'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(LocationStoreRequest $request, string $id)
     {
-        //
+        $location                   = Location::findOrFail($id);
+        $location->name             = ucwords($request->name);
+        $location->slug             = $request->slug;
+        $location->show_at_home     = $request->show_at_home;
+        $location->status           = $request->status;
+        $location->save();
+
+        toastr()->success('Updated Location Successfully.');
+
+        return to_route('admin.location.index');
     }
 
     /**
@@ -73,7 +84,9 @@ class LocationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Location::findOrFail($id)->delete();
+
+        return response(['status' => 'success', 'message' => 'Item deleted successfully..!']);
     }
 
 

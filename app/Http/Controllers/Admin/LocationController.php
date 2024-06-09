@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\LocationDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LocationStoreRequest;
+use App\Http\Requests\Admin\LocationUpdateRequest;
 use App\Models\Location;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
@@ -65,7 +66,7 @@ class LocationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(LocationStoreRequest $request, string $id)
+    public function update(LocationUpdateRequest $request, string $id)
     {
         $location                   = Location::findOrFail($id);
         $location->name             = ucwords($request->name);
@@ -84,9 +85,14 @@ class LocationController extends Controller
      */
     public function destroy(string $id)
     {
-        Location::findOrFail($id)->delete();
+        try {
+            Location::findOrFail($id)->delete();
 
-        return response(['status' => 'success', 'message' => 'Item deleted successfully..!']);
+            return response(['status' => 'success', 'message' => 'Item deleted successfully..!']);
+        } catch (\Exception $e) {
+            logger($e);
+            return response(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 
 

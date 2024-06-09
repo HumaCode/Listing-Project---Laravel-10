@@ -15,9 +15,25 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property string $icon
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Amenity findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Amenity newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Amenity newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Amenity query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Amenity whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Amenity whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Amenity whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Amenity whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Amenity whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Amenity whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Amenity whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Amenity withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class Amenity extends \Eloquent {}
 }

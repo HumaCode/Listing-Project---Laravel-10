@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\AmenityDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Amenity;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
 class AmenityController extends Controller
@@ -21,7 +23,7 @@ class AmenityController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.amenity.create');
     }
 
     /**
@@ -62,5 +64,16 @@ class AmenityController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+
+
+    // slug
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Amenity::class, 'slug', $request->name);
+
+        return response()->json(['slug' => $slug]);
     }
 }

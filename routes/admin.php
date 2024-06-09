@@ -42,3 +42,4 @@ Route::group(['middleware' => ['auth', 'user.type:admin'], 'prefix' => 'admin', 
 // slug route
 Route::get('/category/checkSlug', [CategoryController::class, 'checkSlug'])->name('slug.category');
 Route::get('/location/checkSlug', [LocationController::class, 'checkSlug'])->name('slug.location');
+Route::get('/amenity/checkSlug', [AmenityController::class, 'checkSlug'])->name('slug.amenity');

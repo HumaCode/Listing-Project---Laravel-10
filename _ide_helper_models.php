@@ -96,9 +96,71 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property int $user_id
+ * @property int $category_id
+ * @property int $location_id
+ * @property int|null $package_id
+ * @property string $image
+ * @property string $thumbnail_image
+ * @property string $title
+ * @property string $slug
+ * @property string $description
+ * @property string $phone
+ * @property string $email
+ * @property string $address
+ * @property string|null $website
+ * @property string|null $facebook_link
+ * @property string|null $x_link
+ * @property string|null $linkedin_link
+ * @property string|null $whatsapp_link
+ * @property int $is_verified
+ * @property int $is_featured
+ * @property int $views
+ * @property string|null $google_map_embed_code
+ * @property string|null $file
+ * @property string $expire_date
+ * @property string $seo_title
+ * @property string $seo_description
+ * @property int $status
+ * @property string|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Listing newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Listing query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereExpireDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereFacebookLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereFile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereGoogleMapEmbedCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereIsFeatured($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereIsVerified($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereLinkedinLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereLocationId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing wherePackageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereSeoDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereSeoTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereThumbnailImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereViews($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereWebsite($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereWhatsappLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereXLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class Listing extends \Eloquent {}
 }

@@ -9,11 +9,15 @@ use App\Models\Amenity;
 use App\Models\Category;
 use App\Models\Listing;
 use App\Models\Location;
+use App\Traits\FileUploadTrait;
+use Auth;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
 class ListingController extends Controller
 {
+    use FileUploadTrait;
+
     /**
      * Display a listing of the resource.
      */
@@ -39,7 +43,41 @@ class ListingController extends Controller
      */
     public function store(ListingStoreRequest $request)
     {
-        dd($request->all());
+        $imagePath      = $this->uploadImage($request, 'image');
+        $thumbnailPath  = $this->uploadImage($request, 'thumbnail_image');
+        $attachmentPath  = $this->uploadImage($request, 'file');
+
+        $listing = new Listing();
+        $listing->user_id               = Auth::user()->id;
+        $listing->package_id            = 0;
+        $listing->image                 = $imagePath;
+        $listing->thumbnail_image       = $thumbnailPath;
+        $listing->title                 = ucwords($request->title);
+        $listing->slug                  = $request->slug;
+        $listing->category_id           = $request->category_id;
+        $listing->location_id           = $request->location_id;
+        $listing->address               = $request->address;
+        $listing->phone                 = $request->phone;
+        $listing->email                 = $request->email;
+        $listing->website               = $request->website;
+        $listing->facebook_link         = $request->facebook_link;
+        $listing->x_link                = $request->x_link;
+        $listing->linkedin_link         = $request->linkedin_link;
+        $listing->whatsapp_link         = $request->whatsapp_link;
+        $listing->file                  = $attachmentPath;
+        $listing->description           = $request->description;
+        $listing->google_map_embed_code = $request->google_map_embed_code;
+        $listing->seo_title             = $request->seo_title;
+        $listing->seo_description       = $request->seo_description;
+        $listing->status                = $request->status;
+        $listing->is_verified           = $request->is_verified;
+        $listing->is_featured           = $request->is_featured;
+        $listing->expire_date           = date('Y-m-d');
+        $listing->save();
+
+        toastr()->success('Create Successfully.');
+
+        return to_route('admin.listing.index');
     }
 
     /**

@@ -28,7 +28,7 @@ class ListingStoreRequest extends FormRequest
             'x_link'                => ['nullable', 'url'],
             'linkedin_link'         => ['nullable', 'url'],
             'whatsapp_link'         => ['nullable', 'url'],
-            'file'                  => ['nullable', 'mimes:jpg,jpeg,png,csv,pdf'],
+            'file'                  => ['nullable', 'mimes:jpg,jpeg,png,csv,pdf', 'max:10000'],
             'amenities.*'           => ['nullable', 'integer'],
             'description'           => ['required'],
             'google_map_embed_code' => ['nullable'],

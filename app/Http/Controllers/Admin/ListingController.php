@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\ListingDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ListingStoreRequest;
 use App\Models\Amenity;
 use App\Models\Category;
 use App\Models\Listing;
@@ -36,9 +37,9 @@ class ListingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ListingStoreRequest $request)
     {
-        return $request->all();
+        dd($request->all());
     }
 
     /**

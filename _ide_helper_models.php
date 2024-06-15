@@ -169,6 +169,17 @@ namespace App\Models{
 /**
  * 
  *
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingAmenity newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingAmenity newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingAmenity query()
+ */
+	class ListingAmenity extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property int $id
  * @property string $name
  * @property string $slug

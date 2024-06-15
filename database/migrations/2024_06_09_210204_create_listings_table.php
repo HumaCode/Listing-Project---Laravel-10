@@ -36,8 +36,8 @@ return new class extends Migration
             $table->text('google_map_embed_code')->nullable();
             $table->text('file')->nullable();
             $table->date('expire_date');
-            $table->text('seo_title');
-            $table->text('seo_description');
+            $table->text('seo_title')->nullable();
+            $table->text('seo_description')->nullable();
             $table->boolean('status');
             $table->softDeletes();
             $table->timestamps();

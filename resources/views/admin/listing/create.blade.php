@@ -209,6 +209,39 @@
                                 </div>
 
                                 <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Description <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <textarea class="summernote-simple" style="display: none;" name="description">{{ old('description') }}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Google Map Embed
+                                        <span class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <textarea class="form-control" name="google_map_embed_code">{{ old('google_map_embed_code') }}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">SEO Title <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control" name="seo_title" id="seo_title"
+                                            value="{{ old('seo_title') }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">SEO Description
+                                        <span class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <textarea class="form-control" name="seo_description">{{ old('seo_description') }}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
                                     <div class="col-sm-12 col-md-7">
                                         <div
@@ -216,7 +249,39 @@
                                             <div class="selectric-hide-select">
                                                 <select class="form-control selectric" tabindex="-1" name="status">
                                                     <option value="1">Active</option>
-                                                    <option value="0">Inactive</option>
+                                                    <option value="0" selected>Inactive</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Features</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <div
+                                            class="selectric-wrapper selectric-form-control selectric-selectric selectric-below">
+                                            <div class="selectric-hide-select">
+                                                <select class="form-control selectric" tabindex="-1" name="is_featured">
+                                                    <option value="1">Yes</option>
+                                                    <option value="0" selected>No</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Verified</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <div
+                                            class="selectric-wrapper selectric-form-control selectric-selectric selectric-below">
+                                            <div class="selectric-hide-select">
+                                                <select class="form-control selectric" tabindex="-1" name="is_verified">
+                                                    <option value="1">Yes</option>
+                                                    <option value="0" selected>No</option>
                                                 </select>
                                             </div>
 

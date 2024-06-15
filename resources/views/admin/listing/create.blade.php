@@ -195,7 +195,7 @@
                                             class="selectric-wrapper selectric-form-control selectric-selectric selectric-below">
                                             <div class="selectric-hide-select">
                                                 <select class="form-control select2" multiple="" tabindex="-1"
-                                                    name="show_at_home">
+                                                    name="amenities[]">
                                                     <option>-- Select --</option>
                                                     @foreach ($amenity as $ame)
                                                         <option value="{{ $ame->id }}"> {{ $ame->name }}

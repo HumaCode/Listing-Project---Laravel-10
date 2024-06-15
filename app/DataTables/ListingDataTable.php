@@ -22,7 +22,36 @@ class ListingDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'listing.action')
+            ->addColumn('action', function ($query) {
+                $edit = '<a href="' . route('admin.listing.edit', $query->id) . '" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>';
+                $delete = '<a href="' . route('admin.listing.destroy', $query->id) . '" class="btn btn-danger btn-sm delete-item"><i class="fas fa-trash"></i></a>';
+                $more = '<div class="btn-group dropleft">
+                      <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      <i class="fas fa-cog"></i>
+                      </button>
+                      <div class="dropdown-menu dropleft " x-placement="left-start" style="position: absolute; transform: translate3d(-202px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                      </div>
+                    </div>';
+
+                return $edit . ' &nbsp; ' . $delete . ' &nbsp; ' . $more;
+            })
+            ->addColumn('category', function ($query) {
+                return '<center>' . $query->category->name . '</center>';
+            })
+            ->addColumn('location', function ($query) {
+                return '<center>' . $query->location->name . '</center>';
+            })
+            ->addColumn('status', function ($query) {
+                if ($query->status === 1) {
+                    return '<span class="badge badge-success">Active</span>';
+                } else {
+                    return '<span class="badge badge-danger">Inactive</span>';
+                }
+            })
+            ->rawColumns(['category', 'location', 'status', 'action'])
             ->setRowId('id');
     }
 
@@ -40,20 +69,20 @@ class ListingDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('listing-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('listing-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(1)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -62,15 +91,21 @@ class ListingDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('id')
+                ->addClass('text-center align-middle'),
+            Column::make('title')
+                ->addClass('text-center align-middle'),
+            Column::make('category')
+                ->addClass('text-center align-middle'),
+            Column::make('location')
+                ->addClass('text-center align-middle'),
+            Column::make('status')
+                ->addClass('text-center align-middle'),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(200)
+                ->addClass('text-center align-middle'),
         ];
     }
 

@@ -103,7 +103,7 @@ class CategoryDataTable extends DataTable
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(200)
+                ->width(400)
                 ->addClass('text-center align-middle'),
         ];
     }

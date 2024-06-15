@@ -120,12 +120,14 @@ namespace App\Models{
  * @property string|null $google_map_embed_code
  * @property string|null $file
  * @property string $expire_date
- * @property string $seo_title
- * @property string $seo_description
+ * @property string|null $seo_title
+ * @property string|null $seo_description
  * @property int $status
  * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Category $category
+ * @property-read \App\Models\Location $location
  * @method static \Illuminate\Database\Eloquent\Builder|Listing findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Listing newQuery()
@@ -169,9 +171,19 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property int $listing_id
+ * @property int $amenity_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|ListingAmenity newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ListingAmenity newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ListingAmenity query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingAmenity whereAmenityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingAmenity whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingAmenity whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingAmenity whereListingId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingAmenity whereUpdatedAt($value)
  */
 	class ListingAmenity extends \Eloquent {}
 }

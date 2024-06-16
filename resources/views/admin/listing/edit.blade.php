@@ -200,6 +200,7 @@
                                         @endif
 
                                         <input type="file" class="form-control" name="file" id="file">
+                                        <input type="hidden" name="old_file" value="{{ $listing->file }}">
                                     </div>
                                 </div>
 

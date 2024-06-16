@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\ListingDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ListingStoreRequest;
+use App\Http\Requests\Admin\ListingUpdateRequest;
 use App\Models\Amenity;
 use App\Models\Category;
 use App\Models\Listing;
@@ -115,9 +116,51 @@ class ListingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ListingUpdateRequest $request, string $id)
     {
-        //
+        $imagePath      = $this->uploadImage($request, 'image', $request->old_image);
+        $thumbnailPath  = $this->uploadImage($request, 'thumbnail_image', $request->old_thumbnail_image);
+        $attachmentPath  = $this->uploadImage($request, 'file', $request->old_file);
+
+        $listing =  Listing::findOrFail($id);
+        $listing->user_id               = Auth::user()->id;
+        $listing->package_id            = 0;
+        $listing->image                 = !empty($imagePath) ? $imagePath : $request->old_image;
+        $listing->thumbnail_image       = !empty($thumbnailPath) ? $thumbnailPath : $request->old_thumbnail_image;
+        $listing->title                 = ucwords($request->title);
+        $listing->slug                  = $request->slug;
+        $listing->category_id           = $request->category_id;
+        $listing->location_id           = $request->location_id;
+        $listing->address               = $request->address;
+        $listing->phone                 = $request->phone;
+        $listing->email                 = $request->email;
+        $listing->website               = $request->website;
+        $listing->facebook_link         = $request->facebook_link;
+        $listing->x_link                = $request->x_link;
+        $listing->linkedin_link         = $request->linkedin_link;
+        $listing->whatsapp_link         = $request->whatsapp_link;
+        $listing->file                  = !empty($attachmentPath) ? $attachmentPath : $request->old_file;
+        $listing->description           = $request->description;
+        $listing->google_map_embed_code = $request->google_map_embed_code;
+        $listing->seo_title             = $request->seo_title;
+        $listing->seo_description       = $request->seo_description;
+        $listing->status                = $request->status;
+        $listing->is_verified           = $request->is_verified;
+        $listing->is_featured           = $request->is_featured;
+        $listing->expire_date           = date('Y-m-d');
+        $listing->save();
+
+
+        // foreach ($request->amenities as $amenityId) {
+        //     $amenity = new ListingAmenity();
+        //     $amenity->listing_id = $listing->id;
+        //     $amenity->amenity_id = $amenityId;
+        //     $amenity->save();
+        // }
+
+        toastr()->success('Updated Successfully.');
+
+        return to_route('admin.listing.index');
     }
 
     /**

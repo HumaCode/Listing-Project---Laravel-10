@@ -28,14 +28,29 @@
                         </div>
                         <div class="card-body">
 
-                            <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image <span
-                                        class="text-danger">(multi image supported)</span></label>
-                                <div class="col-sm-12 col-md-7">
-                                    <input type="file" class="form-control" name="image[]" id="image" multiple>
-                                </div>
-                            </div>
+                            <form action="{{ route('admin.listing-image-galery.store') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
 
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image <span
+                                            class="text-danger">(multi image supported)</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="file" class="form-control" name="images[]" id="images" multiple
+                                            accept=".jpg,.jpeg,.png">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;
+                                            Save</button>
+                                    </div>
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>

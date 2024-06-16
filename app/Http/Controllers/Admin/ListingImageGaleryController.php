@@ -28,7 +28,13 @@ class ListingImageGaleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'images'    => ['required'],
+            'images.*'  => ['image', 'max:3000', 'mimes:jpg,jpeg,png'],
+        ], [
+            'images.*.image'    => 'One or more selected files are not valid images..!!',
+            'images.*.max'      => 'One or more images exceed the maximum file size (3MB)..!!',
+        ]);
     }
 
     /**

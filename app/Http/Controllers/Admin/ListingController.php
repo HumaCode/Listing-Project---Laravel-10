@@ -102,7 +102,13 @@ class ListingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category   = Category::all();
+        $location   = Location::all();
+        $amenity    = Amenity::all();
+        $listing    = Listing::findOrFail($id);
+
+
+        return view('admin.listing.edit', compact('category', 'location', 'amenity', 'listing'));
     }
 
     /**

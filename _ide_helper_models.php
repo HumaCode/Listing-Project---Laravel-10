@@ -192,6 +192,17 @@ namespace App\Models{
 /**
  * 
  *
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingImageGalery newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingImageGalery newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingImageGalery query()
+ */
+	class ListingImageGalery extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property int $id
  * @property string $name
  * @property string $slug

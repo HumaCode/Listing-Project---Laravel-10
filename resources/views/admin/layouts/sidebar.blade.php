@@ -205,7 +205,7 @@
             </li>
 
             <li
-                class="dropdown {{ setSidebarActive(['admin.category.*', 'admin.location.*', 'admin.amenity.*', 'admin.listing.*']) }}">
+                class="dropdown {{ setSidebarActive(['admin.category.*', 'admin.location.*', 'admin.amenity.*', 'admin.listing.*', 'admin.listing-image-galery.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fas fa-columns"></i> <span>Listing</span></a>
                 <ul class="dropdown-menu">
@@ -218,7 +218,7 @@
                     <li class="{{ setSidebarActive(['admin.amenity.*']) }}">
                         <a class="nav-link" href="{{ route('admin.amenity.index') }}">Amenities</a>
                     </li>
-                    <li class="{{ setSidebarActive(['admin.listing.*']) }}">
+                    <li class="{{ setSidebarActive(['admin.listing.*', 'admin.listing-image-galery.*']) }}">
                         <a class="nav-link" href="{{ route('admin.listing.index') }}">Listing</a>
                     </li>
                 </ul>

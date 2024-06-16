@@ -21,7 +21,7 @@ class ListingDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        return (new EloquentDataTable($query))
+        return (new EloquentDataTable($query->with('category', 'location')))
             ->addColumn('action', function ($query) {
                 $edit = '<a href="' . route('admin.listing.edit', $query->id) . '" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>';
                 $delete = '<a href="' . route('admin.listing.destroy', $query->id) . '" class="btn btn-danger btn-sm delete-item"><i class="fas fa-trash"></i></a>';
@@ -30,7 +30,7 @@ class ListingDataTable extends DataTable
                       <i class="fas fa-cog"></i>
                       </button>
                       <div class="dropdown-menu dropleft " x-placement="left-start" style="position: absolute; transform: translate3d(-202px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
-                        <a class="dropdown-item" href="' . route('admin.listing-image-galery.index') . '">Image Galery</a>
+                        <a class="dropdown-item" href="' . route('admin.listing-image-galery.index', ['id' => $query->id]) . '">Image Galery</a>
                       </div>
                     </div>';
 

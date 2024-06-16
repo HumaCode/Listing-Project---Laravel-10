@@ -27,6 +27,27 @@ trait FileUploadTrait
         return null;
     }
 
+    function uploadMultipleImage(Request $request, $inputName, $path = '/uploads')
+    {
+        if ($request->hasFile($inputName)) {
+            $images = $request->{$inputName};
+
+            $paths = [];
+
+            foreach ($images as $image) {
+                $ext = $image->getClientOriginalExtension();
+                $imageName = 'media_' . uniqid() . '.' . $ext;
+                $image->move(public_path($path), $imageName);
+
+                $paths[] = $path . '/' . $imageName;
+            }
+
+            return $paths;
+        }
+
+        return null;
+    }
+
     function deleteFile($path)
     {
         // delete image

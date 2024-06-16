@@ -38,6 +38,9 @@
                                     <div class="col-sm-12 col-md-7">
                                         <input type="file" class="form-control" name="images[]" id="images" multiple
                                             accept=".jpg,.jpeg,.png">
+                                        <input type="hidden" name="listing_id" value="{{ request()->id }}">
+                                        <div class="text-danger">* Allowable size 420×280 px</div>
+
                                     </div>
                                 </div>
 

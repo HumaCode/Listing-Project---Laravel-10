@@ -72,33 +72,29 @@
                         <div class="card-body">
 
                             <table class="table">
-                                <thead class="thead-dark">
+                                <thead class="thead-dark text-center">
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
+
+                                    @foreach ($images as $item)
+                                        <tr class="text-center">
+                                            <th scope="row">{{ $loop->iteration }}.</th>
+                                            <td class="p-2">
+                                                <img src="{{ asset($item->image) }}" width="30%" alt="">
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.listing-image-galery.destroy', $item->id) }}"
+                                                    class="btn btn-sm btn-danger delete-item"> <i class="fas fa-trash"></i>
+                                                    &nbsp; Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
 

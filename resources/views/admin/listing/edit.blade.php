@@ -331,6 +331,10 @@
     <script src="{{ asset('admin') }}/assets/modules/select2/dist/js/select2.full.min.js"></script>
 
     <script>
+        var listingAmenities = {!! json_encode($listingAmenities) !!};
+        $('.select2').select2().val(listingAmenities).trigger('change');
+
+
         // slug
         const title = document.querySelector('#title');
         const slug = document.querySelector('#slug');

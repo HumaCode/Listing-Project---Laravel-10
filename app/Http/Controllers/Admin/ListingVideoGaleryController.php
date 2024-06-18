@@ -11,9 +11,12 @@ class ListingVideoGaleryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.listing.listing-video-galery.index');
+        $videos = ListingVideoGalery::where('listing_id', $request->id)->get();
+
+
+        return view('admin.listing.listing-video-galery.index', compact('videos'));
     }
 
     /**
@@ -73,6 +76,13 @@ class ListingVideoGaleryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            ListingVideoGalery::findOrFail($id)->delete();
+
+            return response(['status' => 'success', 'message' => 'Item deleted successfully..!']);
+        } catch (\Exception $e) {
+            logger($e);
+            return response(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 }

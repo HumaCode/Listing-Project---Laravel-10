@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\Admin\ListingImageGaleryController;
+use App\Http\Controllers\Admin\ListingVideoGaleryController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,9 @@ Route::group(['middleware' => ['auth', 'user.type:admin'], 'prefix' => 'admin', 
 
     // listing image galery routes
     Route::resource('/listing-image-galery', ListingImageGaleryController::class);
+
+    // listing video galery routes
+    Route::resource('/listing-video-galery', ListingVideoGaleryController::class);
 });
 
 // slug route

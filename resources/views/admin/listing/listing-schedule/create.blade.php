@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 
 @push('css')
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 @endpush
 
 @section('contents')
@@ -33,7 +34,8 @@
                                 @csrf
 
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Day</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Day <span
+                                            class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
                                         <div
                                             class="selectric-wrapper selectric-form-control selectric-selectric selectric-below">
@@ -48,6 +50,24 @@
                                             </div>
 
                                         </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Start Time <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control timepicker" name="start_time"
+                                            id="start_time">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">End Time <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" class="form-control timepicker" name="end_time"
+                                            id="end_time">
                                     </div>
                                 </div>
 
@@ -87,15 +107,19 @@
 @endsection
 
 @push('style')
-    <script>
-        // slug
-        const name = document.querySelector('#name');
-        const slug = document.querySelector('#slug');
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
-        name.addEventListener('change', function() {
-            fetch('/location/checkSlug?name=' + name.value)
-                .then(response => response.json())
-                .then(data => slug.value = data.slug)
+    <script>
+        $('.timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 60,
+            minTime: '10',
+            maxTime: '6:00pm',
+            defaultTime: '11',
+            startTime: '10:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
         });
     </script>
 @endpush

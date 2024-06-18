@@ -23,8 +23,8 @@ class ListingScheduleDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $edit = '<a href="' . route('admin.category.edit', $query->id) . '" class="btn btn-success"><i class="fas fa-edit"></i></a>';
-                $delete = '<a href="' . route('admin.category.destroy', $query->id) . '" class="btn btn-danger delete-item"><i class="fas fa-trash"></i></a>';
+                $edit = '<a href="' . route('admin.listing-schedule.edit', $query->id) . '" class="btn btn-success"><i class="fas fa-edit"></i></a>';
+                $delete = '<a href="' . route('admin.listing-schedule.destroy', $query->id) . '" class="btn btn-danger delete-item"><i class="fas fa-trash"></i></a>';
 
                 return $edit . ' &nbsp; ' . $delete;
             })

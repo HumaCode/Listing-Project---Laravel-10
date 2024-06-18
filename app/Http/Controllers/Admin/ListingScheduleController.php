@@ -57,15 +57,26 @@ class ListingScheduleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $schedule = ListingSchedule::findOrFail($id);
+
+        return view('admin.listing.listing-schedule.edit', compact('schedule'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(listingScheduleStoreRequest $request, string $id)
     {
-        //
+        $schedule = ListingSchedule::findOrFail($id);
+        $schedule->day          = $request->day;
+        $schedule->start_time   = $request->start_time;
+        $schedule->end_time     = $request->end_time;
+        $schedule->status       = $request->status;
+        $schedule->save();
+
+        toastr()->success('Updated Successfully.');
+
+        return to_route('admin.listing-schedule.index', ['id' => $schedule->listing_id]);
     }
 
     /**
@@ -73,6 +84,13 @@ class ListingScheduleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            ListingSchedule::findOrFail($id)->delete();
+
+            return response(['status' => 'success', 'message' => 'Item deleted successfully..!']);
+        } catch (\Exception $e) {
+            logger($e);
+            return response(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 }

@@ -8,16 +8,16 @@
     <section class="section">
         <div class="section-header">
             <div class="section-header-back">
-                <a href="{{ route('admin.listing-schedule.index', ['id' => $listingId]) }}" class="btn btn-icon"><i
+                <a href="{{ route('admin.listing-schedule.index', ['id' => $schedule->id]) }}" class="btn btn-icon"><i
                         class="fas fa-arrow-left"></i></a>
             </div>
             <h1>Listing Schedule</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard.index') }}">Dashboard</a></div>
                 <div class="breadcrumb-item active"><a
-                        href="{{ route('admin.listing-schedule.index', ['id' => $listingId]) }}">Listing
+                        href="{{ route('admin.listing-schedule.index', ['id' => $schedule->id]) }}">Listing
                         Schedule</a></div>
-                <div class="breadcrumb-item">Create</div>
+                <div class="breadcrumb-item">Edit</div>
             </div>
         </div>
 
@@ -27,12 +27,13 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Add Listing Schedule</h4>
+                            <h4>Edit Listing Schedule</h4>
                         </div>
                         <div class="card-body">
 
-                            <form action="{{ route('admin.listing-schedule.store', $listingId) }}" method="POST">
+                            <form action="{{ route('admin.listing-schedule.update', $schedule->id) }}" method="POST">
                                 @csrf
+                                @method('PUT')
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Day <span
@@ -45,7 +46,8 @@
                                                     <option value="">Choose</option>
 
                                                     @foreach (config('listing-schedule.days') as $day)
-                                                        <option value="{{ $day }}">{{ ucwords($day) }}</option>
+                                                        <option value="{{ $day }}" @selected($day === $schedule->day)>
+                                                            {{ ucwords($day) }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -58,7 +60,7 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Start Time <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control timepicker" name="start_time"
+                                        <input type="text" class="form-control timepicker-1" name="start_time"
                                             id="start_time">
                                     </div>
                                 </div>
@@ -67,7 +69,7 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">End Time <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control timepicker" name="end_time"
+                                        <input type="text" class="form-control timepicker-2" name="end_time"
                                             id="end_time">
                                     </div>
                                 </div>
@@ -79,8 +81,8 @@
                                             class="selectric-wrapper selectric-form-control selectric-selectric selectric-below">
                                             <div class="selectric-hide-select">
                                                 <select class="form-control selectric" tabindex="-1" name="status">
-                                                    <option value="1">Active</option>
-                                                    <option value="0">Inactive</option>
+                                                    <option value="1" @selected($schedule->status === 1)>Active</option>
+                                                    <option value="0" @selected($schedule->status === 0)>Inactive</option>
                                                 </select>
                                             </div>
 
@@ -111,12 +113,24 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
     <script>
-        $('.timepicker').timepicker({
+        $('.timepicker-1').timepicker({
             timeFormat: 'h:mm p',
             interval: 60,
             minTime: '10',
             maxTime: '6:00pm',
-            defaultTime: '11',
+            defaultTime: '{{ $schedule->start_time }}',
+            startTime: '10:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+
+        $('.timepicker-2').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 60,
+            minTime: '10',
+            maxTime: '6:00pm',
+            defaultTime: '{{ $schedule->end_time }}',
             startTime: '10:00',
             dynamic: false,
             dropdown: true,

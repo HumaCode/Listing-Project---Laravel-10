@@ -30,7 +30,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="{{ route('admin.location.store') }}" method="POST">
+                            <form action="{{ route('admin.listing-schedule.store', $listingId) }}" method="POST">
                                 @csrf
 
                                 <div class="form-group row mb-4">

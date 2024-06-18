@@ -72,6 +72,7 @@
                                 <thead class="thead-dark text-center">
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Image</th>
                                         <th scope="col">Video Url</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -82,7 +83,10 @@
                                         <tr class="text-center">
                                             <th scope="row">{{ $loop->iteration }}.</th>
                                             <td class="p-2">
-                                                <img src="" width="30%" alt="">
+                                                <img src="{{ getYtThumbnail($item->video_url) }}" width="50%"
+                                                    alt="">
+                                            </td>
+                                            <td class="p-2">
                                                 <a href="{{ $item->video_url }}" target="_blank">{{ $item->video_url }}</a>
                                             </td>
                                             <td>

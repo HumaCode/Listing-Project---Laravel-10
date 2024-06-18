@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\Admin\ListingImageGaleryController;
+use App\Http\Controllers\Admin\ListingScheduleController;
 use App\Http\Controllers\Admin\ListingVideoGaleryController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -49,6 +50,9 @@ Route::group(['middleware' => ['auth', 'user.type:admin'], 'prefix' => 'admin', 
 
     // listing video galery routes
     Route::resource('/listing-video-galery', ListingVideoGaleryController::class);
+
+    // listing schedule routes
+    Route::get('/listing-schedule', [ListingScheduleController::class, 'index'])->name('listing-schedule.index');
 });
 
 // slug route

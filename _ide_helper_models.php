@@ -213,9 +213,30 @@ namespace App\Models{
 /**
  * 
  *
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingSchedule newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingSchedule newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingSchedule query()
+ */
+	class ListingSchedule extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $listing_id
+ * @property string $video_url
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|ListingVideoGalery newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ListingVideoGalery newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ListingVideoGalery query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingVideoGalery whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingVideoGalery whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingVideoGalery whereListingId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingVideoGalery whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ListingVideoGalery whereVideoUrl($value)
  */
 	class ListingVideoGalery extends \Eloquent {}
 }

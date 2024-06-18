@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth', 'user.type:admin'], 'prefix' => 'admin', 
 
     // listing schedule routes
     Route::get('/listing-schedule', [ListingScheduleController::class, 'index'])->name('listing-schedule.index');
+    Route::get('/listing-schedule/{listing_id}', [ListingScheduleController::class, 'create'])->name('listing-schedule.create');
 });
 
 // slug route

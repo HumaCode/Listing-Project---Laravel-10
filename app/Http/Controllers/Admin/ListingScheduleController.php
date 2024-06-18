@@ -21,7 +21,7 @@ class ListingScheduleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.listing.listing-schedule.create');
     }
 
     /**

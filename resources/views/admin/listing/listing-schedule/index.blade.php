@@ -25,8 +25,8 @@
                         <div class="card-header">
                             <h4>All Listing Schedule</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('admin.listing.create') }}" class="btn btn-primary"><i
-                                        class="fas fa-plus"></i> &nbsp; Create</a>
+                                <a href="{{ route('admin.listing-schedule.create', request()->id) }}"
+                                    class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; Create</a>
                             </div>
                         </div>
                         <div class="card-body">
